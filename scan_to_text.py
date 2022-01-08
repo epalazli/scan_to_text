@@ -20,7 +20,7 @@ def valid_xml_char_ordinal(c): # Function to convert turkish characters to xml c
         0xE000 <= codepoint <= 0xFFFD or
         0x10000 <= codepoint <= 0x10FFFF
     )                  
-                                
+                     
 #function area - end
 
 
