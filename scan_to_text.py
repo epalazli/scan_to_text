@@ -13,14 +13,14 @@ from docx import Document
 
 #function area - start
 def valid_xml_char_ordinal(c): # Function to convert turkish characters to xml chars
-                codepoint = ord(c)
-        
-                return ( # conditions ordered by presumed frequency
-                0x20 <= codepoint <= 0xD7FF or
-                codepoint in (0x9, 0xA, 0xD) or
-                0xE000 <= codepoint <= 0xFFFD or
-                0x10000 <= codepoint <= 0x10FFFF
-                )
+    codepoint = ord(c)
+    return ( # conditions ordered by presumed frequency
+        0x20 <= codepoint <= 0xD7FF or
+        codepoint in (0x9, 0xA, 0xD) or
+        0xE000 <= codepoint <= 0xFFFD or
+        0x10000 <= codepoint <= 0x10FFFF
+    )                  
+                                
 #function area - end
 
 
