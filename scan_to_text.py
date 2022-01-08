@@ -41,12 +41,12 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
     # Save every pdf as png 
     for png_file in png_files:
         name = str(pdf_counter) + 'out.png' # Naming of the .png files
-        png_file.save('/Users/epalazli/Documents/Python/PythonCoding/' + name, 'PNG') # Saving the converted .png file
+        png_file.save(name, 'PNG') # Saving the converted .png file
 
         # Get text of every png
         for img in png_files:
             #name = str(img) + 'out.png' # To get evey pictures name, which we named while converting from .pdf to .png
-            pic_texts = cv2.imread('/Users/epalazli/Documents/Python/PythonCoding/' + name)
+            pic_texts = cv2.imread(name)
             text = pytesseract.image_to_string(pic_texts, lang="tur")
         
             #Write text direcly to a Word file
@@ -55,7 +55,7 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             
             doc.add_paragraph(cleaned_string) # Writes the content in the variable into the .docx file 
             doc.add_page_break()
-            doc.save('/Users/epalazli/Documents/Python/PythonCoding/sohbet.docx')     
+            doc.save('sohbet.docx')     
            
             pdf_counter+= 1 # Increase the counter for a new unique name
 
