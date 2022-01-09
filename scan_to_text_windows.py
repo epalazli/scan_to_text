@@ -1,7 +1,8 @@
 #import area - start
 import tkinter # Module for file selecting window
 from tkinter import filedialog
-from PyPDF2 import PdfFileReader, PdfFileWriter # Module to merge PDFs
+from PyPDF2 import PdfFileReader, PdfFileWriter
+from docx.opc.oxml import parse_xml # Module to merge PDFs
 
 from pdf2image import convert_from_path # Module to convert .pdf to .png
 
@@ -35,9 +36,9 @@ files = filedialog.askopenfilenames(parent=root, title='Select the PDFs to be me
 # Get every selected pdf an convert it to png
 pdf_counter= 1 # Counter for the naming of the .png files for every PDF file
 doc = Document() # Opens a new Word-File. It hads to be opend before the loops to prevent overriding the existing file
-
+poppler = r'C:\Users\windows\Downloads\poppler-0.68.0\bin'
 for file in root.tk.splitlist(files): # This loop goes through every pdf file which were selected in the file dialog
-    png_files = convert_from_path(file, dpi=300) # Get the path of every file and safe it in a variable
+    png_files = convert_from_path(file, dpi=300, poppler_path=poppler) # Get the path of every file and safe it in a variable
      
     # Save every pdf as png 
     for png_file in png_files:
@@ -48,6 +49,7 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
         for img in png_files:
             #name = str(img) + 'out.png' # To get evey pictures name, which we named while converting from .pdf to .png
             pic_texts = cv2.imread(name)
+            pytesseract.pytesseract.tesseract_cmd = r'C:\Users\windows\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
             text = pytesseract.image_to_string(pic_texts, lang="tur")
 
             #Translate text from Turkish to German 
@@ -56,10 +58,9 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             #Write text direcly to a Word file
             cleaned_string = ''.join(c for c in translated if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
             
+            print(cleaned_string)
             doc.add_paragraph(cleaned_string) # Writes the content in the variable into the .docx file 
             doc.add_page_break()
             doc.save('sohbet.docx')     
            
             pdf_counter+= 1 # Increase the counter for a new unique name
-
-
