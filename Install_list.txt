@@ -70,7 +70,11 @@ place it in C:\\Program Files\\Tesseract-OCR\\tessdata (or wherever Tesseract OC
 [WINDOWS]
 
 [MAC OS]
+Type this in the terminal ('abc' stands for the country code as 'tur' for turkey ):
+$ brew install tesseract-lang abc
 
+Type this to list every available language:
+$ tesseract --list-langs
 [MAC OS]
 
 ###
