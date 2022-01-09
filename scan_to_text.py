@@ -9,6 +9,8 @@ import cv2 # Module for image processing. This helps for better "reading" of the
 import pytesseract # Module for extracting the text of an image. Has to be installed with "pip" and "path" and ".exe" on Windows systems! See on githup of "tesseract". 
 
 from docx import Document
+
+from deep_translator import GoogleTranslator
 #import area - end
 
 #function area - start
@@ -48,25 +50,18 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             #name = str(img) + 'out.png' # To get evey pictures name, which we named while converting from .pdf to .png
             pic_texts = cv2.imread(name)
             text = pytesseract.image_to_string(pic_texts, lang="tur")
-        
-            #Write text direcly to a Word file
-            cleaned_string = ''.join(c for c in text if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
 
+            #Translate text from Turkish to German 
+            translated = GoogleTranslator(source='turkish',
+                                        target='german').translate(text)
+
+            #Write text direcly to a Word file
+            cleaned_string = ''.join(c for c in translated if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
             
             doc.add_paragraph(cleaned_string) # Writes the content in the variable into the .docx file 
             doc.add_page_break()
             doc.save('sohbet.docx')     
            
             pdf_counter+= 1 # Increase the counter for a new unique name
-
-
-"""
-#Write text into a .txt file. If the Word-File version ist not prefered 
-text_file = open('/Users/epalazli/Documents/Python/Python Coding/sohbet.txt', "w")
-text_file.write(text) # Automatically appending if the files ist already existing
-text_file.close()
-"""
-
-#code - end
-
+####
 
