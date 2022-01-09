@@ -63,5 +63,5 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             doc.save('sohbet.docx')     
            
             pdf_counter+= 1 # Increase the counter for a new unique name
-####
+
 
