@@ -21,8 +21,7 @@ def valid_xml_char_ordinal(c): # Function to convert turkish characters to xml c
         codepoint in (0x9, 0xA, 0xD) or
         0xE000 <= codepoint <= 0xFFFD or
         0x10000 <= codepoint <= 0x10FFFF
-    )                  
-                     
+    )                            
 #function area - end
 
 
@@ -52,8 +51,7 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             text = pytesseract.image_to_string(pic_texts, lang="tur")
 
             #Translate text from Turkish to German 
-            translated = GoogleTranslator(source='turkish',
-                                        target='german').translate(text)
+            translated = GoogleTranslator(source='turkish', target='german').translate(text)
 
             #Write text direcly to a Word file
             cleaned_string = ''.join(c for c in translated if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
