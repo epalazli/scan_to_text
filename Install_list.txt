@@ -66,7 +66,8 @@ $ brew install tesseract
 The Tesseract installer provided by Chocolatey currently includes only English language. 
 To install other languages, download the respective language pack (.traineddata file) 
 from https://github.com/tesseract-ocr/tessdata/ and 
-place it in C:\\Program Files\\Tesseract-OCR\\tessdata (or wherever Tesseract OCR is installed).
+place it in C:\\Program Files\\Tesseract-OCR\\tessdata (or wherever Tesseract OCR is installed. 
+As usually in: C:\Users\windows\AppData\Local\Programs\Tesseract-OCR).
 [WINDOWS]
 
 
