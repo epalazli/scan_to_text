@@ -1,6 +1,6 @@
 #import area - start
 import tkinter # Module for file selecting window
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from PyPDF2 import PdfFileReader, PdfFileWriter
 from docx.opc.oxml import parse_xml # Module to merge PDFs
 
@@ -37,13 +37,20 @@ files = filedialog.askopenfilenames(parent=root, title='Select the PDFs to be me
 pdf_counter= 1 # Counter for the naming of the .png files for every PDF file
 doc = Document() # Opens a new Word-File. It hads to be opend before the loops to prevent overriding the existing file
 poppler = r'C:\Users\windows\Downloads\poppler-0.68.0\bin'
+
+#Information windwos "Please wait..."
+root.after(7000, root.destroy) #Closes window after 7 seconds. 
+tkinter.messagebox.showinfo(title='Information', message='Please wait until the PDFs are converted! This window closes in 7 seconds...ss')
+
 for file in root.tk.splitlist(files): # This loop goes through every pdf file which were selected in the file dialog
+    
     png_files = convert_from_path(file, dpi=300, poppler_path=poppler) # Get the path of every file and safe it in a variable
      
     # Save every pdf as png 
     for png_file in png_files:
         name = str(pdf_counter) + 'out.png' # Naming of the .png files
         png_file.save(name, 'PNG') # Saving the converted .png file
+        
 
         # Get text of every png
         for img in png_files:
@@ -58,9 +65,12 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             #Write text direcly to a Word file
             cleaned_string = ''.join(c for c in translated if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
             
-            print(cleaned_string)
+            #print(cleaned_string)
             doc.add_paragraph(cleaned_string) # Writes the content in the variable into the .docx file 
             doc.add_page_break()
             doc.save('sohbet.docx')     
            
             pdf_counter+= 1 # Increase the counter for a new unique name
+
+root.after(7000, root.destroy) #Closes window after 7 seconds. 
+tkinter.messagebox.showinfo(title='Finished', message='Converting is done! This window closes in 7 seconds...ss')

@@ -1,6 +1,6 @@
 #import area - start
 import tkinter # Module for file selecting window
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from PyPDF2 import PdfFileReader, PdfFileWriter # Module to merge PDFs
 
 from pdf2image import convert_from_path # Module to convert .pdf to .png
@@ -36,6 +36,14 @@ files = filedialog.askopenfilenames(parent=root, title='Select the PDFs to be me
 pdf_counter= 1 # Counter for the naming of the .png files for every PDF file
 doc = Document() # Opens a new Word-File. It hads to be opend before the loops to prevent overriding the existing file
 
+"""
+DOES NOT WORK RIGHT NOW. THE WINDOW ISN'T CLOSING
+#Information windwos "Please wait..."
+root.after(7000, root.destroy) #Closes window after 7 seconds. 
+tkinter.messagebox.showinfo(title='Information', message='Please wait until the PDFs are converted! This window closes in 7 seconds...')
+"""
+
+
 for file in root.tk.splitlist(files): # This loop goes through every pdf file which were selected in the file dialog
     png_files = convert_from_path(file, dpi=300) # Get the path of every file and safe it in a variable
      
@@ -61,5 +69,4 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             doc.save('sohbet.docx')     
            
             pdf_counter+= 1 # Increase the counter for a new unique name
-
 
