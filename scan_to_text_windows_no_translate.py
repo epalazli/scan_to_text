@@ -59,11 +59,8 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             pytesseract.pytesseract.tesseract_cmd = r'C:\Users\windows\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
             text = pytesseract.image_to_string(pic_texts, lang="tur")
 
-            #Translate text from Turkish to German 
-            translated = GoogleTranslator(source='turkish', target='german').translate(text)
-
             #Write text direcly to a Word file
-            cleaned_string = ''.join(c for c in translated if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
+            cleaned_string = ''.join(c for c in text if valid_xml_char_ordinal(c)) # Replace chars with XML counterparts
             
             #print(cleaned_string)
             doc.add_paragraph(cleaned_string) # Writes the content in the variable into the .docx file 
