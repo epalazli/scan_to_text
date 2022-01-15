@@ -36,7 +36,7 @@ files = filedialog.askopenfilenames(parent=root, title='Select the PDFs to be me
 # Get every selected pdf an convert it to png
 pdf_counter= 1 # Counter for the naming of the .png files for every PDF file
 doc = Document() # Opens a new Word-File. It hads to be opend before the loops to prevent overriding the existing file
-poppler = r'C:\Users\windows\Downloads\poppler-0.68.0\bin'
+poppler = r'C:\Users\%username%\Desktop\poppler-0.68.0\bin'
 
 #Info window "Please wait..."
 root.after(7000, root.destroy) #Closes window after 7 seconds. 
