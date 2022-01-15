@@ -12,8 +12,6 @@ import pytesseract # Module for extracting the text of an image. Has to be insta
 from docx import Document
 
 from deep_translator import GoogleTranslator
-
-import time
 #import area - end
 
 #function area - start
@@ -76,5 +74,6 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
 
 #Info window - "Task done!"
 tkinter.messagebox.showinfo(title='Finished', message='Task completed! Click "OK" to close the window')
+
 
 #Code - End
