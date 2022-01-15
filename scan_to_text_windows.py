@@ -73,4 +73,4 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
             pdf_counter+= 1 # Increase the counter for a new unique name
 
 root.after(7000, root.destroy) #Closes window after 7 seconds. 
-tkinter.messagebox.showinfo(title='Finished', message='Converting is done! This window closes in 7 seconds...ss')
+tkinter.messagebox.showinfo(title='Finished', message='Converting is done! This window closes in 7 seconds...')
