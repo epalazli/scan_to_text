@@ -40,7 +40,7 @@ poppler = r'C:\Users\windows\Downloads\poppler-0.68.0\bin'
 
 #Information windwos "Please wait..."
 root.after(7000, root.destroy) #Closes window after 7 seconds. 
-tkinter.messagebox.showinfo(title='Information', message='Please wait until the PDFs are converted! This window closes in 7 seconds...ss')
+tkinter.messagebox.showinfo(title='Information', message='Please wait until the PDFs are converted! This window closes in 7 seconds...')
 
 for file in root.tk.splitlist(files): # This loop goes through every pdf file which were selected in the file dialog
     
