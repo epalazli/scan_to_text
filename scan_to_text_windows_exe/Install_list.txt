@@ -1,0 +1,87 @@
+To be installed:
+
+###
+### poppler
+###
+
+[WINDOWS]
+https://stackoverflow.com/questions/53481088/poppler-in-path-for-pdf2image
+1st of all Download Poppler from here here,Then extract it.
+In the code section just add poppler_path=r'C:\Program Files\poppler-0.68.0\bin'(for eg.) like below:
+
+###
+from pdf2image import convert_from_path
+images = convert_from_path("mypdf.pdf", 500,poppler_path=r'C:\Program Files\poppler-0.68.0\bin')
+for i, image in enumerate(images):
+    fname = 'image'+str(i)+'.png'
+    image.save(fname, "PNG")
+###
+[WINDOWS]
+
+#-#-#-#-#-#-#
+
+[MAC OS]
+Type this in the terminal:
+$ brew install poppler
+[MAC OS]
+
+###
+### poppler
+###
+
+
+###
+### tesseract
+###
+
+[WINDOWS]
+I see steps are scattered in different answers. Based on my recent experience with this pytesseract error on Windows, writing different steps in sequence to make it easier to resolve the error:
+
+1. Install tesseract using windows installer available at: https://github.com/UB-Mannheim/tesseract/wiki
+
+2. Note the tesseract path from the installation. Default installation path at the time of this edit was: C:\Users\USER\AppData\Local\Tesseract-OCR. It may change so please check the installation path.
+
+3. pip install pytesseract and pip install tesseract
+
+4. Set the tesseract path in the script before calling image_to_string. Put it in the line before using pytesseract:
+
+pytesseract.pytesseract.tesseract_cmd = r'C:\Users\USER\AppData\Local\Tesseract-OCR\tesseract.exe'
+[WINDOWS]
+
+-#-#-#-#-#-#-
+
+[MAC OS]
+Type this in the terminal:
+$ brew install tesseract
+[MAC OS]
+###
+### tesseract
+###
+
+###
+### Tesseract: other languages
+###
+
+[WINDOWS]
+The Tesseract installer provided by Chocolatey currently includes only English language. 
+To install other languages, download the respective language pack (.traineddata file) 
+from https://github.com/tesseract-ocr/tessdata/ and 
+place it in C:\\Program Files\\Tesseract-OCR\\tessdata (or wherever Tesseract OCR is installed. 
+As usually in: C:\Users\windows\AppData\Local\Programs\Tesseract-OCR).
+[WINDOWS]
+
+
+-#-#-#-#-#-#-
+
+
+[MAC OS]
+Type this in the terminal ('abc' stands for the country code as 'tur' for turkey ):
+$ brew install tesseract-lang abc
+
+Type this to list every available language:
+$ tesseract --list-langs
+[MAC OS]
+
+###
+### Tesseract: other languages
+###
