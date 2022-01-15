@@ -76,3 +76,5 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
 
 #Info window - "Task done!"
 tkinter.messagebox.showinfo(title='Finished', message='Task completed! Click "OK" to close the window')
+
+#Code - End
