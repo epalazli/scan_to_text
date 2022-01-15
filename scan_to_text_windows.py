@@ -1,4 +1,5 @@
 #import area - start
+from opcode import haslocal
 import tkinter # Module for file selecting window
 from tkinter import filedialog, messagebox
 from PyPDF2 import PdfFileReader, PdfFileWriter
@@ -24,7 +25,6 @@ def valid_xml_char_ordinal(c): # Function to convert turkish characters to xml c
         0x10000 <= codepoint <= 0x10FFFF
     )                            
 #function area - end
-
 
 #code - start
 
@@ -75,5 +75,5 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
 #Info window - "Task done!"
 tkinter.messagebox.showinfo(title='Finished', message='Task completed! Click "OK" to close the window')
 
-
 #Code - End
+print('hallo')
