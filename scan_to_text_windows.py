@@ -38,9 +38,9 @@ pdf_counter= 1 # Counter for the naming of the .png files for every PDF file
 doc = Document() # Opens a new Word-File. It hads to be opend before the loops to prevent overriding the existing file
 poppler = r'C:\Users\windows\Downloads\poppler-0.68.0\bin'
 
-#Information windwos "Please wait..."
+#Info window "Please wait..."
+tkinter.messagebox.showinfo(title='Information', message='Please wait until the PDFs are converted! This window will close in 7 seconds...')
 root.after(7000, root.destroy) #Closes window after 7 seconds. 
-tkinter.messagebox.showinfo(title='Information', message='Please wait until the PDFs are converted! This window closes in 7 seconds...')
 
 for file in root.tk.splitlist(files): # This loop goes through every pdf file which were selected in the file dialog
     
@@ -72,5 +72,6 @@ for file in root.tk.splitlist(files): # This loop goes through every pdf file wh
            
             pdf_counter+= 1 # Increase the counter for a new unique name
 
+#Info window - "Task done!"
+tkinter.messagebox.showinfo(title='Finished', message='Task completed! This window will close in 7 seconds...')
 root.after(7000, root.destroy) #Closes window after 7 seconds. 
-tkinter.messagebox.showinfo(title='Finished', message='Converting is done! This window closes in 7 seconds...')
